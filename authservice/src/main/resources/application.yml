@@ -1,0 +1,43 @@
+spring:
+  application:
+    name: auth-service
+
+  data:
+    mongodb:
+      url: mongodb://admin:admin123@localhost:27017/auth_db?authSource=admin
+      authentication-database: true
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/spharos6th-auth
+    username: root
+    password: 20010815
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+      format_sql: true
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+        format_sql: true
+
+server:
+  port: 0
+
+eureka:
+  instance:
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+
+JWT:
+  secret-key: 1bce3fa358ad5f5d89b2ec5d45ab89bb574244593afee33fd5d46f902bc398c4
+  token:
+    access-expire-time: 3600
+
