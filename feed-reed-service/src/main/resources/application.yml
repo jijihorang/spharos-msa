@@ -1,0 +1,31 @@
+server:
+  port: 12000
+
+spring:
+  application:
+    name: feed-reed-service
+
+  data:
+    mongodb:
+      uri: mongodb+srv://jiho:jiho7213@clusterchat.potqui6.mongodb.net/feed-read?retryWrites=true&w=majority&appName=ClusterFeedRead
+      auto-index-creation: true
+
+  kafka:
+    bootstrap-servers: localhost:9092
+    consumer:
+      group-id: feed-read-group
+      # earliest → 가장 오래된 메시지부터 읽기 (과거 이력 전부) / latest → 가장 최근 메시지부터 읽기 (지금 이후 것만) / none → offset 없으면 에러 발생 (보통 테스트나 트랜잭션 처리용)
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+
+eureka:
+  instance:
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+
