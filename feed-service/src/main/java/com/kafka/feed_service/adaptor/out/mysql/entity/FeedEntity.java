@@ -1,5 +1,6 @@
 package com.kafka.feed_service.adaptor.out.mysql.entity;
 
+import com.kafka.feed_service.common.entity.BaseEntity;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -11,7 +12,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @Getter
 @NoArgsConstructor
-public class FeedEntity {
+public class FeedEntity extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,8 +29,8 @@ public class FeedEntity {
     private boolean isDeleted;
 
     @Builder
-    public FeedEntity(Long id, String feedUuid, String title,
-                      String content, String authorId, boolean isDeleted) {
+    public FeedEntity(Long id, String feedUuid, String title, String content,
+                      String authorId, boolean isDeleted) {
         this.id = id;
         this.feedUuid = feedUuid;
         this.title = title;

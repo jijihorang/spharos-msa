@@ -17,7 +17,6 @@ public class FeedResponseDto {
     private String title;
 
     private String content;
-
     private String authorId;
 
     private boolean isDeleted;
@@ -25,6 +24,7 @@ public class FeedResponseDto {
     private LocalDateTime createdAt;
 
     private LocalDateTime updatedAt;
+
 
     @Builder
     public FeedResponseDto(String feedUuid, String title, String content,

@@ -11,7 +11,7 @@ public interface FeedRepositoryPort {
 
     void update(FeedDto feedDto);
 
-    FeedResponseDto findByFeedUuid(String feedUuid);
+    FeedDto findByFeedUuid(String feedUuid);
 
     List<FeedResponseDto> findByAuthorId(String authorId);
 
